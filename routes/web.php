@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PegawaiController;
 
 
 Route::get('/', function () {
@@ -42,3 +43,28 @@ Route::post('/reset-password', [AuthController::class, 'prosessResetPassword'])-
 
 // Logout route
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Pegawai routes
+//1.READ -> MENAMPILKAN DATA PEGAWAI
+Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai.index');
+
+//2.CREATE -> MENAMPILKAN FORM UNTUK MENAMBAH DATA PEGAWAI
+Route::post('/pegawai', [PegawaiController::class, 'store'])->name('pegawai.store');
+
+//3. UPDATE -> MENAMPILKAN FORM UNTUK MENGEDIT DATA PEGAWAI
+Route::get('/pegawai/create', [PegawaiController::class, 'create'])->name('pegawai.create');
+
+//4. DELETE -> MENGHAPUS DATA PEGAWAI
+Route::delete('/pegawai/{pegawai}', [PegawaiController::class, 'destroy'])->name('pegawai.destroy');
+
+//5. EDIT -> MENAMPILKAN FORM UNTUK MENGEDIT DATA PEGAWAI
+Route::get('/pegawai/{pegawai}/edit', [PegawaiController::class, 'edit'])->name('pegawai.edit');
+
+//6. UPDATE -> MEMPERBARUI DATA PEGAWAI
+Route::put('/pegawai/{pegawai}', [PegawaiController::class, 'update'])->name('pegawai.update');
+
+//7. SHOW -> MENAMPILKAN DETAIL DATA PEGAWAI
+Route::get('/pegawai/{pegawai}', [PegawaiController::class, 'show'])->name('pegawai.show');
+
+//8. SEARCH -> MENCARI DATA PEGAWAI
+Route::get('/pegawai/search', [PegawaiController::class, 'search'])->name('pegawai.search');
